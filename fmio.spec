@@ -6,7 +6,7 @@ Release:	2
 License:	GPL
 Group:		Applications/Sound
 Source0:	http://jumbo.narod.ru/src/fmio/%{name}-%{version}.tar.gz
-Patch0:		%{name}-home_etc.patch
+Patch0:		%{name}-etc_dir.patch
 URL:		http://jumbo.narod.ru/fmio.html
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
