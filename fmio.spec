@@ -2,10 +2,11 @@ Summary:	FM card initializer and FM radio player
 Summary(pl):	Program inicjalizuj±cy karty radiowe
 Name:		fmio
 Version:	1.2.29
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Sound
 Source0:	http://jumbo.narod.ru/src/fmio/%{name}-%{version}.tar.gz
+Patch0:		%{name}-home_etc.patch
 URL:		http://jumbo.narod.ru/fmio.html
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -18,6 +19,7 @@ Program zarz±dzaj±cy kart± radiow± FM.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} CC="%{__cc} %{rpmcflags} -Wall"
