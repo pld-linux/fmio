@@ -14,7 +14,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 fm radio card manipulation utility.
 
 %description -l pl
-Menad¿er kart odbieraj±cych radia nadaj±ce w FM.
+Program zarz±dzaj±cy kart± radiow± FM.
 
 %prep
 %setup -q
