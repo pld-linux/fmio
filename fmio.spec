@@ -1,7 +1,7 @@
 Summary:	FM card initializer and FM radio player
 Summary(pl):	Program inicjalizuj±cy karty radiowe
 Name:		fmio
-Version:	1.2.26
+Version:	1.2.29
 Release:	1
 License:	GPL
 Group:		Applications/Sound
@@ -29,14 +29,12 @@ install fmio $RPM_BUILD_ROOT%{_bindir}
 install fmio.1 $RPM_BUILD_ROOT%{_mandir}/man1
 install *.o $RPM_BUILD_ROOT%{_datadir}/%{name}
 
-gzip -9nf Changelog README ess1868
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc Changelog README ess1868
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 %{_datadir}/%{name}
