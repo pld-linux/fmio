@@ -1,0 +1,52 @@
+diff -Nru fmio-1.2.29/xsrc/wmfmio.c fmio-1.2.29.new/xsrc/wmfmio.c
+--- fmio-1.2.29/xsrc/wmfmio.c	Fri Jul  5 17:29:20 2002
++++ fmio-1.2.29.new/xsrc/wmfmio.c	Sat Mar 29 12:21:20 2003
+@@ -148,25 +148,37 @@
+ int
+ main(int argc,char *argv[]) {
+ 	char *home;
++	char *config_dir;
++	
+ 	myname = argv[0];
+ 	ParseCMDLine(argc, argv);
+-
+-	home = getenv("HOME");
+-	if (home == NULL)
+-		home = ".";
+-	strncpy(temp, home, TMPBUFSIZE);
+-	temp[TMPBUFSIZE] = '\0';
+-	strncat(temp, "/.", TMPBUFSIZE);
+-	temp[TMPBUFSIZE] = '\0';
+-	strncat(temp, RCFILE, TMPBUFSIZE);
+-	temp[TMPBUFSIZE] = '\0';
++	
++	config_dir = getenv("CONFIG_DIR");
++	if (config_dir) {
++		strncpy(temp, config_dir, TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++		strncat(temp, "/", TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++		strncat(temp, RCFILE, TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++	} else {
++		home = getenv("HOME");
++		if (home == NULL)
++			home = ".";
++		strncpy(temp, home, TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++		strncat(temp, "/.", TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++		strncat(temp, RCFILE, TMPBUFSIZE);
++		temp[TMPBUFSIZE] = '\0';
++	}
+ 	if ( ParseRCFile(temp) == 1 ) {
+ 		strncpy(temp, "/etc/", TMPBUFSIZE);
+ 		temp[TMPBUFSIZE] = '\0';
+ 		strncat(temp, RCFILE, TMPBUFSIZE);
+ 		temp[TMPBUFSIZE] = '\0';
+ 		if (ParseRCFile(temp) == 1)
+-			errx(1, "~/.%s or /etc/%s not found", RCFILE, RCFILE);
++			errx(1, "$CONFIG_DIR/%s, ~/.%s or /etc/%s not found", RCFILE, RCFILE, RCFILE);
+ 	}
+ 
+ 	if (cmdline_preset == ON)
