@@ -23,8 +23,7 @@ Program zarz±dzaj±cy kart± radiow± FM.
 %patch0 -p1
 
 %build
-cd src
-%{__make} CC="%{__cc} %{rpmcflags} -Wall"
+%{__make} -C src CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
