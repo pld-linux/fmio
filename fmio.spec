@@ -1,5 +1,5 @@
 Summary:	FM card initializer and FM radio player
-Summary(pl):	Program inicjalizuj±cy karty radiowe
+Summary(pl.UTF-8):   Program inicjalizujÄ…cy karty radiowe
 Name:		fmio
 Version:	2.0.8
 Release:	1
@@ -15,8 +15,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 fm radio card manipulation utility.
 
-%description -l pl
-Program zarz±dzaj±cy kart± radiow± FM.
+%description -l pl.UTF-8
+Program zarzÄ…dzajÄ…cy kartÄ… radiowÄ… FM.
 
 %prep
 %setup -q
